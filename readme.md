@@ -81,3 +81,15 @@
 ```
 sudo apt install slurm-wlm
 ```
+### <br/>
+
+### slurm 문서 패키지 설치
+```
+sudo apt install slurm-wlm-doc
+```
+### <br/>
+
+
+### <br/>
+
+
