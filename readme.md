@@ -52,7 +52,9 @@
 
 ### federation
 ### 다음과 같이 multiple slurmctld 를 구성하고 연결할 수도 있다. 이를 federation 이라고 한다.
-#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/184ad9f4-a0fd-48f8-aa2f-e93a029b3e77)
+#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/513b5ac3-5559-491f-b452-eeb534e7c814)
+
+
 ### <br/><br/><br/>
 
 --------------------------------------------------------------------------
