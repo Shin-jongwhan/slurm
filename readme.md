@@ -10,8 +10,6 @@
 ### <br/><br/><br/>
 
 ## 설명
-### slurm 을 설치하면 munge 라는 프로그램도 같이 설치가 된다.
-### munge
 #### 서버 클러스터링 상에서, master node (slurmctld) 가 있고, 작업을 수행하는 compute node (slurmd) 가 있다.
 #### 그리고 프로세스 (또는 작업)를 관리하고 작업 정보에 대해 저장하는 slurmdbd 가 있다. 
 #### 작은 cluster 상에서는 mysql 과 소통할 수 있다. 
@@ -53,6 +51,15 @@
 ### `federation`
 ### 다음과 같이 multiple slurmctld 를 구성하고 연결할 수도 있다. 이를 federation 이라고 한다.
 #### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/513b5ac3-5559-491f-b452-eeb534e7c814)
+### <br/>
+
+### `munge`
+### slurm 을 설치하면 munge 라는 프로그램도 같이 설치가 된다.
+### munge 는 authentication plugin 이다.
+### Authentication plugins identifies the user originating a message.
+### 어느 한 계정에서 slurm 을 실행한다고 하면 그 계정에서 실행된 고유의 uid 값을 가질 것이고, 다른 계정에서는 그 uid 값이 달라진다. 그 고유번호가 달라지면 권한에 문제가 발생한다.
+### 그래서 munge 에게 실행 권한을 주고 같은 uid 값을 할당하게 한다.
+### <br/>
 
 
 ### <br/><br/><br/>
