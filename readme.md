@@ -80,6 +80,7 @@
 ### 다음의 사이트를 참고하였다.
 - http://luxnox.iptime.org/blog/ubuntu-20-4-%EC%97%90-slurm-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/
 - https://ai4nlp.tistory.com/25
+- https://novelism.co.kr/94
 ### <br/>
 
 ### slurm 설치
@@ -187,10 +188,32 @@ mkdir /var/spool/slurm-llnl
 chown slurm: /var/spool/slurm-llnl
 chmod 755 /var/spool/slurm-llnl
 ```
+### 만약 /etc/slurm-llnl/slurm.conf 에서 아래 directory 나 file 이 없으면 위와 같이 mkdir, 권한을 slurm 으로 넘겨주고 touch file 을 진행해준다. 
+#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/c2997597-5095-4236-8f40-445b866e6dfd)
+### <br/>
+
+### slurm 실행
+#### * status 에 active 가 찍혀야 한다.
+```
+# slurmctld (master node) service 실행
+systemctl stop slurmctld.service
+systemctl enable slurmctld.service
+systemctl start slurmctld.service
+systemctl status slurmctld.service
+
+# slurmd (computing node) service 실행
+systemctl stop slurmd.service
+systemctl enable slurmd.service
+systemctl start slurmd.service
+systemctl status slurmd.service
+```
 ### <br/>
 
 ### slurm 실행
 ```
+# slurm 실행
 slurmctld -Dcvvv
 ```
-
+### 다음과 같이 error 메세지가 없이 실행되고 있어야 한다.
+#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/bb8db19c-0934-476b-9959-4081046c1d08)
+### <br/>
