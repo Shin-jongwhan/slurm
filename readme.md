@@ -61,6 +61,15 @@
 ### 그래서 munge 에게 실행 권한을 주고 같은 uid 값을 할당하게 한다.
 ### <br/>
 
+### `database`
+### 다음의 database 가 사용가능하다.
+- MySQL
+- MariaDB
+### <br/>
+
+### `MPI`
+### [MPI (message passing interface)](https://github.com/Shin-jongwhan/TIL/tree/main/server_clustering/MPI_message_passing_interface)
+### 병렬 처리를 위한 통신 규약으로, 노드 간 정보 교환을 해주는 매개체이다.
 
 ### <br/><br/><br/>
 
