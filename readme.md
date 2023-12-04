@@ -34,6 +34,13 @@
 ### job 을 running 하는 명령어
 ### srun 은 slurmstepd 에 할당된 port range 와 소통한다. random 으로 작업 제출에 사용될 임시 포트 (ephemeral port) 가 할당된다. 
 ### 이는 SrunPortRange 으로 port range 를 정의할 수 있고, firewall 설정이 이루어져야 한다.
+### <br/>
+
+### 전반적인 과정은 srun - slurmctld, srun - slurmd - slurmstepd 와 소통하는 과정이다.
+### srun 이 실행되면 slurmctld 에게 job 제출되었다고 알려주고, 인증한다.
+### 그리고 job 에 I/O 를 할당하기 위해 socket 을 열고, 거기에 각 job 을 할당한다. 여기에서 slurmstepd 와 소통하여 job 을 실행할 수 있도록 제출한다.
+### slurmstepd 는 task 를 실행한다.
+### 그리고 다시 위로, slurmstepd -> slrumd -> srun -> slurmctld 에게 job 에 대한 termination 을 알려준다.
 #### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/10456f68-a679-404b-bf0f-86f7b1bf5a9f)
 ### <br/>
 
