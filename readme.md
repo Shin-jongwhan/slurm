@@ -77,17 +77,99 @@
 
 
 ## 설치 방법
-### slurm 설치
-```
-sudo apt install slurm-wlm
-```
+### 다음의 사이트를 참고하였다.
+- http://luxnox.iptime.org/blog/ubuntu-20-4-%EC%97%90-slurm-%EC%8A%A4%EC%BC%80%EC%A4%84%EB%9F%AC-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/
+- https://ai4nlp.tistory.com/25
 ### <br/>
 
-### slurm 문서 패키지 설치
+### slurm 설치
 ```
+# slurm 설치
+sudo apt install slurm-wlm
+
+# slurm 문서 패키지 설치
 sudo apt install slurm-wlm-doc
 ```
 ### <br/>
+
+### 만약 munge 에 대해 user, group add 가 안 되어 있으면 다음을 따라한다.
+```
+export MUNGEUSER=991
+groupadd -g $MUNGEUSER munge
+useradd  -m -c "MUNGE Uid 'N' Gid Emporium" -d /var/lib/munge -u $MUNGEUSER -g munge  -s /sbin/nologin munge
+```
+### <br/>
+
+### /etc/slurm-llnl/slurm.conf 설정
+### slurm.conf 를 만드는 데에 도움을 주는 웹사이트가 있으니 참고
+- slurm.schedmd.com/configurator.html
+```
+#
+# slurm.conf for ubuntu 20.04
+#
+ClusterName=cluster1
+#SlurmctldHost=182.162.88.158
+ControlMachine=bidev2
+ControlAddr=182.162.88.158
+#
+MpiDefault=none
+AuthType=auth/munge
+ProctrackType=proctrack/linuxproc
+ReturnToService=1
+SlurmctldPidFile=/run/slurm-llnl/slurmctld.pid
+#SlurmctldPort=6817
+SlurmdPidFile=/run/slurm-llnl/slurmd.pid
+#SlurmdPort=6818
+SlurmdSpoolDir=/var/lib/slurm-llnl/slurmd
+SlurmUser=slurm
+StateSaveLocation=/var/spool/slurm-llnl
+TaskPlugin=task/none
+# SCHEDULING
+SchedulerType=sched/backfill
+SelectType=select/cons_res
+SelectTypeParameters=CR_Core_Memory
+# LOGGING AND ACCOUNTING
+AccountingStorageType=accounting_storage/none
+JobCompType=jobcomp/none
+JobAcctGatherType=jobacct_gather/linux
+SlurmctldLogFile=/var/log/slurm-llnl/slurmctld.log
+SlurmdLogFile=/var/log/slurm-llnl/slurmd.log
+#
+DebugFlags=NO_CONF_HASH
+#
+# COMPUTE NODES
+NodeName=bidev2 NodeAddr=192.168.0.12 CPUs=8 Boards=1 SocketsPerBoard=1 CoresPerSocket=8 ThreadsPerCore=1 RealMemory=64000
+PartitionName=batch Nodes=alpha Default=YES MaxTime=INFINITE State=UP
+```
+### <br/>
+
+### 마스터 노드와 컴퓨터 노드 설정
+#### * 원래는 둘 다 설정해야 하는데, 지금은 서버 하나로만 테스트하기 때문에 마스터 노드만 설정
+```
+dd if=/dev/urandom of=/etc/munge/munge.key bs=1c count=4M
+ls -l /etc/munge/munge.key
+chmod a-r /etc/munge/munge.key
+chmod u-w /etc/munge/munge.key $ chmod u+r /etc/munge/munge.key
+chown munge:munge /etc/munge/munge.key
+munge –n
+munge –n | unmunge
+# 컴퓨터 노드에 munge.key 를 복사 (컴퓨터 노드가 있는 경우 실행)
+# $ scp /etc/munge/munge.key node1:/etc/munge/
+systemctl enable munge
+/etc/init.d/munge restart
+```
+### 다음과 같이 ok 가 출력되어야 한다.
+#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/524d58d7-01fb-42a5-a1bf-d11fc948b486)
+### <br/>
+
+### munge daemon 실행 확인
+```
+systemctl status munge
+```
+#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/fa8dfb28-80e1-4604-b26f-eb3a7d070b52)
+### <br/>
+
+### 
 
 
 ### <br/>
