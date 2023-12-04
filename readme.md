@@ -217,3 +217,48 @@ slurmctld -Dcvvv
 ### 다음과 같이 error 메세지가 없이 실행되고 있어야 한다.
 #### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/bb8db19c-0934-476b-9959-4081046c1d08)
 ### <br/>
+
+### node 실행 확인
+```
+sinfo
+```
+##### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/9e50ec1d-ba4c-4758-8f8e-19703a7d9800)
+### <br/>
+
+### 명령어
+- squeue : qeueue 확인
+- sbatch : script 로 job 제출
+- srun : 실행파일을 직접 queue에 제출
+- scontrol : 노드,  queue 제어
+### <br/><br/><br/>
+
+## 예제
+### 예제 스크립트
+```
+mkdir -p /home/jhshin/test/slurm
+vi sleep.sh
+```
+
+```
+#!/bin/bash
+#
+#SBATCH --job-name=test
+#SBATCH --output=res.txt
+#SBATCH --ntasks=1
+#SBATCH --time=10:00
+
+srun sleep 30
+srun hostname
+#############
+```
+
+```
+sbatch sleep.sh
+```
+### <br/>
+
+### squeue 로 job 을 확인해본다.
+#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/694dd47b-06bc-42a1-9d08-8ccee6a0f572)
+### 30초 뒤에 출력으로 hostname 이 output 파일에 저장된다.
+#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/bfe43a34-d898-46d4-bc46-0e3b9ebe9931)
+### <br/><br/><br/>
