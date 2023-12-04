@@ -15,6 +15,7 @@
 #### 서버 클러스터링 상에서, master node (slurmctld) 가 있고, 작업을 수행하는 compute node (slurmd) 가 있다.
 #### 그리고 프로세스 (또는 작업)를 관리하고 작업 정보에 대해 저장하는 slurmdbd 가 있다. 
 #### 작은 cluster 상에서는 mysql 과 소통할 수 있다. 
+#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/598b6828-c2d2-4c7e-be00-94acc46217ad)
 ### <br/>
 
 ### slurmctld 의 default port 는 6817 이다. 이는 slurm.conf 에서 바꿀 수 있다.
@@ -30,9 +31,12 @@
 ### <br/>
 
 ### `srun`
+### job 을 running 하는 명령어
 ### srun 은 slurmstepd 에 할당된 port range 와 소통한다. random 으로 작업 제출에 사용될 임시 포트 (ephemeral port) 가 할당된다. 
 ### 이는 SrunPortRange 으로 port range 를 정의할 수 있고, firewall 설정이 이루어져야 한다.
-#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/598b6828-c2d2-4c7e-be00-94acc46217ad)
+#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/10456f68-a679-404b-bf0f-86f7b1bf5a9f)
+### <br/>
+
 
 
 
