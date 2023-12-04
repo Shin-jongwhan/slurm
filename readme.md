@@ -169,9 +169,28 @@ systemctl status munge
 #### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/fa8dfb28-80e1-4604-b26f-eb3a7d070b52)
 ### <br/>
 
-### 
+### slurm master node 설정
+```
+# slurmctld
+mkdir /var/spool/slurmctld
+chown slurm: /var/spool/slurmctld
+chmod 755 /var/spool/slurmctld
+touch /var/log/slurmctld.log
+chown slurm: /var/log/slurmctld.log
+touch /var/log/slurm_jobacct.log /var/log/slurm_jobcomp.log
+chown slurm: /var/log/slurm_jobacct.log /var/log/slurm_jobcomp.log
+systemctl enable slurmctld
+/etc/init.d/slurmctld restart
 
-
+# slurm-llnl
+mkdir /var/spool/slurm-llnl
+chown slurm: /var/spool/slurm-llnl
+chmod 755 /var/spool/slurm-llnl
+```
 ### <br/>
 
+### slurm 실행
+```
+slurmctld -Dcvvv
+```
 
