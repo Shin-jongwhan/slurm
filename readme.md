@@ -116,7 +116,7 @@ MpiDefault=none
 AuthType=auth/munge
 ProctrackType=proctrack/linuxproc
 ReturnToService=1
-SlurmctldPidFile=/run/slurm-llnl/slurmctld.pid
+SlurmctldPidFile=/var/log/slurm-llnl/slurmctld.pid
 #SlurmctldPort=6817
 SlurmdPidFile=/run/slurm-llnl/slurmd.pid
 #SlurmdPort=6818
@@ -138,8 +138,8 @@ SlurmdLogFile=/var/log/slurm-llnl/slurmd.log
 DebugFlags=NO_CONF_HASH
 #
 # COMPUTE NODES
-NodeName=bidev2 NodeAddr=192.168.0.12 CPUs=8 Boards=1 SocketsPerBoard=1 CoresPerSocket=8 ThreadsPerCore=1 RealMemory=64000
-PartitionName=batch Nodes=alpha Default=YES MaxTime=INFINITE State=UP
+NodeName=bidev2 NodeAddr=182.162.88.158 CPUs=8 Boards=1 SocketsPerBoard=1 CoresPerSocket=8 ThreadsPerCore=1 RealMemory=16000
+PartitionName=batch Nodes=bidev2 Default=YES MaxTime=INFINITE State=UP
 ```
 ### <br/>
 
