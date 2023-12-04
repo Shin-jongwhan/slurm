@@ -44,8 +44,16 @@
 #### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/10456f68-a679-404b-bf0f-86f7b1bf5a9f)
 ### <br/>
 
+### slurmctld, slurmdbd 는 여러 개 구성할 수 있고 (multi cluster), 각각의 slurmctld, slurmdbd 는 각각 할당된 올바른 destination 으로 가야 한다. 
+### 그리고 slurmdbd 는 mysql server 와 소통해야 한다.
+#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/716f1ade-9ec1-45f4-8502-bc0378a1394e)
+#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/b9f69cad-0771-4c13-860f-97f5dfdc3d52)
+### <br/>
 
-
+### federation
+### 다음과 같이 multiple slurmctld 를 구성하고 연결할 수도 있다. 이를 federation 이라고 한다.
+#### ![image](https://github.com/Shin-jongwhan/slurm/assets/62974484/184ad9f4-a0fd-48f8-aa2f-e93a029b3e77)
+### <br/><br/><br/>
 
 --------------------------------------------------------------------------
 
